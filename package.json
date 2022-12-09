@@ -1,0 +1,28 @@
+{
+  "name": "simple_chat",
+  "version": "1.0.0",
+  "description": "Chat with websocket",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnthonyGOliveira/simple_chat.git"
+  },
+  "author": "AnthonyGOliveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnthonyGOliveira/simple_chat/issues"
+  },
+  "homepage": "https://github.com/AnthonyGOliveira/simple_chat#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "jest": "^29.3.1"
+  },
+  "dependencies": {
+    "ws": "^8.11.0"
+  }
+}
