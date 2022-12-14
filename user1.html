@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div><input id="message" type="text"><button id="sendMessageBtn">Send Message</button></div>
+    <div><input id="message" type="text"><button id="sendMessageBtn" onclick="sendMessage()">Send Message</button></div>
 </body>
 <script>
     // Create WebSocket connection.
@@ -26,7 +26,7 @@
     });
     
     const btn = document.querySelector("#sendMessageBtn");
-    btn.addEventListener('click', sendMessage);
+    // btn.addEventListener('click', sendMessage);
     const message = document.querySelector("#message");
     function sendMessage() {
         socket.send(message.value);
