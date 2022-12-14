@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Chat with websocket",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "test": "jest"
   },
   "repository": {
