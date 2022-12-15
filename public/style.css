@@ -1,0 +1,17 @@
+body{
+    background: #20232B;
+}
+.chat-column {
+    height: 100%;
+    background: #1D1E24;
+    border-radius: 20px;
+}
+
+#chat{
+    height: 580px;
+}
+
+.message{
+    background-color: #16171B;
+    color: azure;
+}

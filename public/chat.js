@@ -14,7 +14,7 @@ socket.addEventListener("message", (event) => {
   messages.push(event.data);
   console.log("Message from server ", event.data);
   messages.forEach((msg) => {
-    chat.innerHTML += `<p>${msg}</p>`;
+    chat.innerHTML += `<div class="bg-primary m-3 p-1 text-light">${msg}</div>`;
   });
 });
 
