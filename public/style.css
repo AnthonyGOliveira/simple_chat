@@ -1,17 +1,43 @@
-body{
-    background: #20232B;
+body {
+    background-image: linear-gradient(to right, #010101ed, #281D35);
 }
+
 .chat-column {
     height: 100%;
     background: #1D1E24;
     border-radius: 20px;
 }
 
-#chat{
+#chat {
     height: 580px;
+    display: flex;
+    flex-direction: column;
 }
 
-.message{
+#message {
+    background: #16171B;
+    border: none;
+}
+
+.message {
     background-color: #16171B;
     color: azure;
+}
+
+.bg-msg-rcv {
+    background: #16171B;
+    border-radius: 0px 10px 10px 15px;
+    display: inline-block;
+}
+
+.bg-msg-snd {
+    background: #B784F7;
+    border-radius: 0px 10px 10px 15px;
+    display: inline-block;
+}
+
+.text-msg {
+    margin: auto 15px;
+    padding: 10px;
+    display: inline-block;
 }

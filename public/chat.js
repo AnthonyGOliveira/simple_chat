@@ -11,10 +11,17 @@ socket.addEventListener("open", (event) => {
 // Listen for messages
 socket.addEventListener("message", (event) => {
   chat.innerHTML = "";
-  messages.push(event.data);
-  console.log("Message from server ", event.data);
+  console.log(event.data);
+  let message = JSON.parse(event.data.toString());
+  messages.push(message);
+  console.log("Message from server ", message.user);
   messages.forEach((msg) => {
-    chat.innerHTML += `<div class="bg-primary m-3 p-1 text-light">${msg}</div>`;
+    chat.innerHTML += `
+    <div>
+      <div class="bg-msg-rcv mt-3 text-light">
+        <p class="text-msg">${msg.data}</p>
+      </div>
+    </div>`;
   });
 });
 

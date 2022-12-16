@@ -1,26 +1,27 @@
 const { wss } = require("./http");
 const WS = require("ws");
+const User = require("../domain/user")
 let users = [];
 
 wss.on("connection", (ws) => {
-  let user = {
-    id: 1 + users.length + 'j',
-  };
+  let user = new User();
   ws.user = user;
   users.push(ws);
   console.log(wss.clients.size);
-  ws.send(`Welcome user ${users.length}`);
+  ws.send(JSON.stringify(user));
   ws.on("message", function message(data, isBinary) {
+    msg = {
+      data: data.toString(),
+      user: ws.user
+    }
     wss.clients.forEach(function each(client) {
       if (client.readyState === WS.OPEN) {
-        client.send(data, { binary: isBinary });
-      }
-      if (data.toString() == "disconnected") {
-        console.log("Usuário desconectado");
+        client.send(JSON.stringify(msg), { binary: isBinary });
       }
     });
   });
   ws.on("close", () => {
     console.log(wss.clients.size, ws.user.id);
+    console.log("Usuário desconectado");
   });
 });
