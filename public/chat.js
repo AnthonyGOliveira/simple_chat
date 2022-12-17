@@ -34,8 +34,8 @@ socket.addEventListener("message", async (event) => {
   messages.forEach((msg) => {
     console.log('MESSAGE: ', msg);
     chat.innerHTML += `
-    <div id="msg-container" ${messageReceive(msg) ? 'class="msg-received"' : ''}>
-      <div ${messageReceive(msg) ? 'class="bg-msg-rcv mt-3 text-light"' : 'class="bg-msg-snd mt-3 text-light"'}>
+    <div id="msg-container" ${messageReceive(msg) ? '' : 'class="msg-send"'}>
+      <div ${messageReceive(msg) ? 'class="bg-msg-rcv mt-3 text-light"': 'class="bg-msg-snd mt-3 text-light"'}>
         <p class="text-msg">${msg.getMessage()}</p>
       </div>
       <span id="msg-time" ${messageReceive(msg) ? 'class="msg-time-received"' : 'class="msg-time-default"'}>${msg.getTime()}</span>
