@@ -1,48 +1,58 @@
+const userConnect = {}
+function messageReceive(message){
+  return userConnect.id != message.id;
+}
+
 // Create WebSocket connection.
-const socket = new WebSocket("ws://localhost:8000");
-let messages = [];
-const chat = document.querySelector("#chat");
+const socket = new WebSocket("ws://localhost:8000")
+let messages = []
+const chat = document.querySelector("#chat")
 
 // Connection opened
 socket.addEventListener("open", (event) => {
-  console.log("Connected to websocket server");
-});
+  console.log("Connected to websocket server")
+})
 
 // Listen for messages
 socket.addEventListener("message", async (event) => {
-  chat.innerHTML = "";
-  let message = JSON.parse(event.data.toString());
-  console.log(JSON.parse(message.data.toString()));
-  setCardUser(message)
-  if (message.data) {
-    let newMessage = await JSON.parse(message.data.toString());
-    let messageDomain = new Message(newMessage.message)
-    messageDomain.setDateMessage(new Date(newMessage.dateMessage))
-    messages.push(messageDomain);
-    console.log('************************************', messages);
+  chat.innerHTML = ""
+  let message = JSON.parse(event.data.toString())
+  console.log(message)
+  if (!userConnect.hasOwnProperty('id')) {
+    userConnect.id = message.id
+    userConnect.name = message.name
   }
-  console.log("Message from server ", message.user);
+  setCardUser(userConnect)
+  if (message.data) {
+    let newMessage = await JSON.parse(message.data.toString())
+    let messageDomain = new Message(newMessage.message, message.user.id)
+    messageDomain.setDateMessage(new Date(newMessage.dateMessage))
+    messages.push(messageDomain)
+    console.log('************************************', messages)
+  }
+  console.log("Message from server ", message.user)
   messages.forEach((msg) => {
+    console.log('MESSAGE: ', msg);
     chat.innerHTML += `
-    <div id="msg-container">
-      <div class="bg-msg-rcv mt-3 text-light">
+    <div id="msg-container" ${messageReceive(msg) ? 'class="msg-received"' : ''}>
+      <div ${messageReceive(msg) ? 'class="bg-msg-rcv mt-3 text-light"' : 'class="bg-msg-snd mt-3 text-light"'}>
         <p class="text-msg">${msg.getMessage()}</p>
       </div>
-      <span id="msg-time">${msg.getTime()}</span>
-    </div>`;
-  });
-});
+      <span id="msg-time" ${messageReceive(msg) ? 'class="msg-time-received"' : 'class="msg-time-default"'}>${msg.getTime()}</span>
+    </div>`
+  })
+})
 
-const btn = document.querySelector("#sendMessageBtn");
-// btn.addEventListener('click', sendMessage);
-const message = document.querySelector("#message");
+const btn = document.querySelector("#sendMessageBtn")
+// btn.addEventListener('click', sendMessage)
+const message = document.querySelector("#message")
 function sendMessage() {
-  let msg = new Message(message.value);
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', JSON.stringify(msg));
-  socket.send(JSON.stringify(msg));
-  message.value = "";
+  let msg = new Message(message.value)
+  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', JSON.stringify(msg))
+  socket.send(JSON.stringify(msg))
+  message.value = ""
 }
 
 socket.addEventListener("close", (event) => {
-  socket.send("disconnected");
-});
+  socket.send("disconnected")
+})

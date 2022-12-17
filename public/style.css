@@ -60,7 +60,13 @@ body {
     position: relative;
 }
 
-#msg-time {
+.msg-received {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.msg-time-default {
     color: white;
     position: absolute;
     left: 12%;
@@ -68,14 +74,21 @@ body {
     font-size: 10px;
 }
 
+.msg-time-received{
+    color: white;
+    position: absolute;
+    top: 100%;
+    font-size: 10px;
+}
+
 .bg-msg-rcv {
-    background: #16171B;
+    background: #B784F7;
     border-radius: 0px 10px 10px 15px;
     display: inline-block;
 }
 
 .bg-msg-snd {
-    background: #B784F7;
+    background: #16171B;
     border-radius: 0px 10px 10px 15px;
     display: inline-block;
 }

@@ -1,7 +1,12 @@
 class Message {
-    constructor(message) {
+    constructor(message, id) {
+        this.id = id;
         this.dateMessage = new Date();
         this.message = message;
+    }
+
+    getId() {
+        return this.id;
     }
 
     getDateMessage() {
