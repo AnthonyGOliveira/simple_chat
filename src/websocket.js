@@ -1,13 +1,14 @@
 const { wss } = require("./http");
 const WS = require("ws");
 const User = require("../domain/user")
-let users = [];
+let usersDb = require("../infra/db");
+const deleteUser = require("../aplication/delete_user_use_case")
 
 wss.on("connection", (ws) => {
   let user = new User();
   user.setName('Anthony')
   ws.user = user;
-  users.push(ws);
+  usersDb.addUser(ws.user);
   console.log(wss.clients.size);
   ws.send(JSON.stringify(user));
   ws.on("message", function message(data, isBinary) {
@@ -22,7 +23,8 @@ wss.on("connection", (ws) => {
     });
   });
   ws.on("close", () => {
-    console.log(wss.clients.size, ws.user.id);
+    deleteUser(ws.user.id);
+    console.log('$$$$$$$$$$$$$$$$$$$$$$', wss.clients.size, ws.user.id);
     console.log("Usuário desconectado");
   });
 });

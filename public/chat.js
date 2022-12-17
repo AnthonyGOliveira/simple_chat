@@ -17,7 +17,6 @@ socket.addEventListener("open", (event) => {
 socket.addEventListener("message", async (event) => {
   chat.innerHTML = ""
   let message = JSON.parse(event.data.toString())
-  console.log(message)
   if (!userConnect.hasOwnProperty('id')) {
     userConnect.id = message.id
     userConnect.name = message.name
@@ -28,11 +27,8 @@ socket.addEventListener("message", async (event) => {
     let messageDomain = new Message(newMessage.message, message.user.id)
     messageDomain.setDateMessage(new Date(newMessage.dateMessage))
     messages.push(messageDomain)
-    console.log('************************************', messages)
   }
-  console.log("Message from server ", message.user)
   messages.forEach((msg) => {
-    console.log('MESSAGE: ', msg);
     chat.innerHTML += `
     <div id="msg-container" ${messageReceive(msg) ? '' : 'class="msg-send"'}>
       <div ${messageReceive(msg) ? 'class="bg-msg-rcv mt-3 text-light"': 'class="bg-msg-snd mt-3 text-light"'}>
@@ -48,7 +44,6 @@ const btn = document.querySelector("#sendMessageBtn")
 const message = document.querySelector("#message")
 function sendMessage() {
   let msg = new Message(message.value)
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', JSON.stringify(msg))
   socket.send(JSON.stringify(msg))
   message.value = ""
 }

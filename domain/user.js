@@ -1,8 +1,8 @@
 const guid = require("../utils/guid")
 
 class User {
-    constructor() {
-        this.name = ''
+    constructor(name = '') {
+        this.name = name
         this.id = guid()
     }
 

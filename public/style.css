@@ -1,100 +1,107 @@
 body {
-    background-image: linear-gradient(to right, #010101ed, #281D35);
+  background-image: linear-gradient(to right, #010101ed, #281d35);
 }
 
 .chat-column {
-    height: 100%;
-    background: #1D1E24;
-    border-radius: 20px;
+  height: 100%;
+  background: #1d1e24;
+  border-radius: 20px;
 }
 
 .chat-menu {
-    background: #20232B;
-    margin-right: 4px;
+  background: #20232b;
+  margin-right: 4px;
 }
 
 .chat-input-btn {
-    justify-content: end;
+  justify-content: end;
 }
 
 .chat-btn {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .chat-card {
-    background: #000000;
-    color: antiquewhite;
+  background: #000000;
+  color: antiquewhite;
 }
 
 #chat {
-    height: 580px;
-    display: flex;
-    flex-direction: column;
+  height: 580px;
+  display: flex;
+  flex-direction: column;
 }
 
 #message {
-    background: #16171B;
-    border: none;
+  background: #16171b;
+  border: none;
 }
 
 #sendMessageBtn {
-    background: #F3FC8A;
-    border-radius: 0px 10px 10px 0px;
-    width: 40px;
-    height: 35px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  background: #f3fc8a;
+  border-radius: 0px 10px 10px 0px;
+  width: 40px;
+  height: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .message {
-    background-color: #16171B;
-    color: azure;
+  background-color: #16171b;
+  color: azure;
 }
 
 #msg-container {
-    position: relative;
+  position: relative;
 }
 
 .msg-send {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }
 
 .msg-time-default {
-    color: white;
-    position: absolute;
-    top: 100%;
-    font-size: 10px;
+  color: white;
+  position: absolute;
+  top: 100%;
+  font-size: 10px;
 }
 
-.msg-time-received{
-    color: white;
-    position: absolute;
-    left: 1%;
-    top: 100%;
-    font-size: 10px;
+.msg-time-received {
+  color: white;
+  position: absolute;
+  left: 1%;
+  top: 100%;
+  font-size: 10px;
 }
 
 .bg-msg-rcv {
-    background: #16171B;
-    border-radius: 0px 10px 10px 15px;
-    display: inline-block;
+  background: #16171b;
+  border-radius: 0px 10px 10px 15px;
+  display: inline-block;
 }
 
 .bg-msg-snd {
-    background: #B784F7;
-    border-radius: 10px 0px 15px 10px;
-    display: inline-block;
+  background: #b784f7;
+  border-radius: 10px 0px 15px 10px;
+  display: inline-block;
 }
 
 .text-msg {
-    margin: auto 15px;
-    padding: 10px;
-    display: inline-block;
+  margin: auto 15px;
+  padding: 10px;
+  display: inline-block;
+}
+
+#users_connect {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
