@@ -9,18 +9,26 @@ socket.addEventListener("open", (event) => {
 });
 
 // Listen for messages
-socket.addEventListener("message", (event) => {
+socket.addEventListener("message", async (event) => {
   chat.innerHTML = "";
-  console.log(event.data);
   let message = JSON.parse(event.data.toString());
-  messages.push(message);
+  console.log(JSON.parse(message.data.toString()));
+  setCardUser(message)
+  if (message.data) {
+    let newMessage = await JSON.parse(message.data.toString());
+    let messageDomain = new Message(newMessage.message)
+    messageDomain.setDateMessage(new Date(newMessage.dateMessage))
+    messages.push(messageDomain);
+    console.log('************************************', messages);
+  }
   console.log("Message from server ", message.user);
   messages.forEach((msg) => {
     chat.innerHTML += `
-    <div>
+    <div id="msg-container">
       <div class="bg-msg-rcv mt-3 text-light">
-        <p class="text-msg">${msg.data}</p>
+        <p class="text-msg">${msg.getMessage()}</p>
       </div>
+      <span id="msg-time">${msg.getTime()}</span>
     </div>`;
   });
 });
@@ -29,7 +37,9 @@ const btn = document.querySelector("#sendMessageBtn");
 // btn.addEventListener('click', sendMessage);
 const message = document.querySelector("#message");
 function sendMessage() {
-  socket.send(message.value);
+  let msg = new Message(message.value);
+  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', JSON.stringify(msg));
+  socket.send(JSON.stringify(msg));
   message.value = "";
 }
 

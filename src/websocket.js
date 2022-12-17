@@ -5,6 +5,7 @@ let users = [];
 
 wss.on("connection", (ws) => {
   let user = new User();
+  user.setName('Anthony')
   ws.user = user;
   users.push(ws);
   console.log(wss.clients.size);
