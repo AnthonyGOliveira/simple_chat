@@ -104,4 +104,43 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
+}
+
+.chip {
+  border: 1px solid #1a1e23;
+  border-radius: 50px;
+  background: #1a1e23;
+  margin-bottom: 10px;
+  width: 90%;
+}
+
+.chip img {
+  margin-right: 15px;
+}
+
+#modal {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.modal-content {
+  background: #20232B;
+  color: white;
+}
+
+.modal-header, .modal-footer, #input-usr-name, #btn-save{
+  border: none;
+}
+
+#input-usr-name{
+  background: #16171B;
+}
+
+#btn-save{
+  background: #b784f7;
+  color: #16171b;
+}
+
+#btn-save:hover{
+  background: #c89efa;
 }

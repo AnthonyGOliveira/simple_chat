@@ -6,7 +6,6 @@ const deleteUser = require("../aplication/delete_user_use_case")
 
 wss.on("connection", (ws) => {
   let user = new User();
-  user.setName('Anthony')
   ws.user = user;
   usersDb.addUser(ws.user);
   console.log(wss.clients.size);
@@ -24,7 +23,5 @@ wss.on("connection", (ws) => {
   });
   ws.on("close", () => {
     deleteUser(ws.user.id);
-    console.log('$$$$$$$$$$$$$$$$$$$$$$', wss.clients.size, ws.user.id);
-    console.log("Usuário desconectado");
   });
 });
