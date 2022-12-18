@@ -22,12 +22,12 @@ socket.addEventListener("message", async (event) => {
     userConnect.name = message.name
   }
   setCardUser(userConnect)
-  getUsers();
   if (message.data) {
     let newMessage = await JSON.parse(message.data.toString())
     let messageDomain = new Message(newMessage.message, message.user.id)
     messageDomain.setDateMessage(new Date(newMessage.dateMessage))
     messages.push(messageDomain)
+    getUsers();
   }
   messages.forEach((msg) => {
     chat.innerHTML += `

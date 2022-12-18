@@ -1,20 +1,14 @@
 class UsersDb {
   constructor() {
-    this.users = new Set();
+    this.users = new Map();
   }
 
   addUser(user) {
-    this.users.add(user);
+    this.users.set(user.id, user);
   }
 
   getUser(id) {
-    let user = null;
-    for (let u of this.users) {
-      if (u.id == id) {
-        user = u;
-        break;
-      }
-    }
+    let user = this.users.get(id);
     return user;
   }
 
@@ -23,11 +17,15 @@ class UsersDb {
   }
 
   deleteUser(id) {
-    this.users.forEach((u) => {
-      if(u.id == id){
-        this.users.delete(u);
-      }
-    });
+    this.users.delete(id);
+  }
+
+  update(id, atribute, value) {
+    let newUser = this.users.get(id);
+    if(atribute == 'name') {
+        newUser.setName(value)
+    }
+    this.users.set(id, newUser);
   }
 }
 

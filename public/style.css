@@ -108,6 +108,7 @@ body {
 }
 
 .chip {
+  display: flex;
   border: 1px solid #1a1e23;
   border-radius: 50px;
   background: #1a1e23;
@@ -119,6 +120,16 @@ body {
   margin-right: 15px;
 }
 
+.chip p {
+  text-align: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  margin-right: 15px;
+  background: #b784f7;
+  width: 25px;
+  border-radius: 100%;
+}
+
 #modal {
   background: rgba(0, 0, 0, 0.3);
 }
@@ -128,19 +139,22 @@ body {
   color: white;
 }
 
-.modal-header, .modal-footer, #input-usr-name, #btn-save{
+.modal-header,
+.modal-footer,
+#input-usr-name,
+#btn-save {
   border: none;
 }
 
-#input-usr-name{
+#input-usr-name {
   background: #16171B;
 }
 
-#btn-save{
+#btn-save {
   background: #b784f7;
   color: #16171b;
 }
 
-#btn-save:hover{
+#btn-save:hover {
   background: #c89efa;
 }
